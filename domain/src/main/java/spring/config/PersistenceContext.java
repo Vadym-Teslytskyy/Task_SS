@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan("repository")
 @PropertySource("classpath:database.properties")
-public class AppConfig {
+public class PersistenceContext {
 
     @Autowired
     Environment environment;

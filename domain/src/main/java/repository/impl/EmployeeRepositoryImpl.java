@@ -4,11 +4,13 @@ import entity.Employee;
 import mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import repository.EmployeeRepository;
 
 import javax.sql.DataSource;
 import java.util.List;
 
+@Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     JdbcTemplate jdbcTemplate;
