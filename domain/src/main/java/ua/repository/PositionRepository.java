@@ -1,6 +1,6 @@
-package repository;
+package ua.repository;
 
-import entity.Position;
+import ua.entity.Position;
 
 import java.util.List;
 

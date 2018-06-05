@@ -1,10 +1,10 @@
-package repository.impl;
+package ua.repository.impl;
 
-import entity.Position;
-import mapper.PositionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import repository.PositionRepository;
+import ua.entity.Position;
+import ua.mapper.PositionMapper;
+import ua.repository.PositionRepository;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -12,6 +12,8 @@ import java.util.List;
 public class PositionRepositoryImpl implements PositionRepository {
 
     JdbcTemplate jdbcTemplate;
+
+    PositionMapper positionMapper;
 
     private final String SQL_FIND_POSITION_BY_ID = "select * from position where id = ?";
     private final String SQL_DELETE_POSITION_BY_ID = "delete from position where id = ?";
@@ -22,18 +24,19 @@ public class PositionRepositoryImpl implements PositionRepository {
             + " values(?,?,?,?)";
 
     @Autowired
-    public PositionRepositoryImpl(DataSource dataSource) {
+    public PositionRepositoryImpl(DataSource dataSource, PositionMapper positionMapper) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.positionMapper = positionMapper;
     }
 
     @Override
     public Position findEmployeeById(Integer id) {
-        return jdbcTemplate.queryForObject(SQL_FIND_POSITION_BY_ID, new Object[]{id}, new PositionMapper());
+        return jdbcTemplate.queryForObject(SQL_FIND_POSITION_BY_ID, new Object[]{id}, positionMapper);
     }
 
     @Override
     public List<Position> getAllEmployees() {
-        return jdbcTemplate.query(SQL_FIND_ALL, new PositionMapper());
+        return jdbcTemplate.query(SQL_FIND_ALL, positionMapper);
     }
 
     @Override

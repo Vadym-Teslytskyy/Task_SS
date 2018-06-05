@@ -1,4 +1,4 @@
-package spring.config;
+package ua.spring.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan("repository")
+@ComponentScan
 @PropertySource("classpath:database.properties")
 public class PersistenceContext {
 

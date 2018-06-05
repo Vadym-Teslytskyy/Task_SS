@@ -1,6 +1,6 @@
-package repository;
+package ua.repository;
 
-import entity.Employee;
+import ua.entity.Employee;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package entity;
+package ua.entity;
 
 public class Employee {
 
