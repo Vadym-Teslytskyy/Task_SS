@@ -13,9 +13,9 @@ import java.util.List;
 @Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
-    EmployeeMapper employeeMapper;
+    private EmployeeMapper employeeMapper;
 
     private final String SQL_FIND_EMPLOYEE_BY_ID = "select * from employee where id = ?";
     private final String SQL_DELETE_EMPLOYEE_BY_ID = "delete from employee where id = ?";

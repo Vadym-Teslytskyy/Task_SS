@@ -11,9 +11,9 @@ import java.util.List;
 
 public class PositionRepositoryImpl implements PositionRepository {
 
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
-    PositionMapper positionMapper;
+    private PositionMapper positionMapper;
 
     private final String SQL_FIND_POSITION_BY_ID = "select * from position where id = ?";
     private final String SQL_DELETE_POSITION_BY_ID = "delete from position where id = ?";
@@ -30,28 +30,28 @@ public class PositionRepositoryImpl implements PositionRepository {
     }
 
     @Override
-    public Position findEmployeeById(Integer id) {
+    public Position findPositionById(Integer id) {
         return jdbcTemplate.queryForObject(SQL_FIND_POSITION_BY_ID, new Object[]{id}, positionMapper);
     }
 
     @Override
-    public List<Position> getAllEmployees() {
+    public List<Position> getAllPositions() {
         return jdbcTemplate.query(SQL_FIND_ALL, positionMapper);
     }
 
     @Override
-    public boolean deleteEmployee(Position position) {
+    public boolean deletePosition(Position position) {
         return jdbcTemplate.update(SQL_DELETE_POSITION_BY_ID, position.getId()) > 0;
     }
 
     @Override
-    public boolean updateEmployee(Position position) {
+    public boolean updatePosition(Position position) {
         return jdbcTemplate.update(SQL_UPDATE_POSITION_BY_ID, position.getCompanyName(), position.getPositionName(),
                 position.getSalary(), position.getId()) > 0;
     }
 
     @Override
-    public boolean createEmployee(Position position) {
+    public boolean createPosition(Position position) {
         return jdbcTemplate.update(SQL_INSERT_POSITION, position.getId(), position.getCompanyName(),
                 position.getPositionName(), position.getSalary()) > 0;
     }

@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface PositionRepository {
 
-    Position findEmployeeById(Integer id);
+    Position findPositionById(Integer id);
 
-    List<Position> getAllEmployees();
+    List<Position> getAllPositions();
 
-    boolean deleteEmployee(Position employee);
+    boolean deletePosition(Position position);
 
-    boolean updateEmployee(Position employee);
+    boolean updatePosition(Position position);
 
-    boolean createEmployee(Position employee);
+    boolean createPosition(Position position);
 }

@@ -43,4 +43,12 @@ public class PositionDto {
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
+
+    public String toString() {
+        return "PositionDto{" +
+                "companyName='" + companyName + '\'' +
+                ", positionName='" + positionName + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }

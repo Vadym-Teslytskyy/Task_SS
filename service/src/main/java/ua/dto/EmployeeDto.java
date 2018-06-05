@@ -41,4 +41,12 @@ public class EmployeeDto {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public String toString() {
+        return "EmployeeDto{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
