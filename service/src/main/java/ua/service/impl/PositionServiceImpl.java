@@ -2,8 +2,8 @@ package ua.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.dto.PositionDto;
 import ua.mapper.impl.PositionReversibleDtoMapper;
+import ua.model.dto.PositionDto;
 import ua.repository.PositionRepository;
 import ua.service.PositionService;
 

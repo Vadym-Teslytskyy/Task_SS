@@ -1,9 +1,9 @@
 package ua.mapper.impl;
 
 import org.springframework.stereotype.Component;
-import ua.dto.EmployeeDto;
 import ua.entity.Employee;
 import ua.mapper.ReversibleDtoMapper;
+import ua.model.dto.EmployeeDto;
 
 @Component
 public class EmployeeReversibleDtoMapper implements ReversibleDtoMapper<Employee, EmployeeDto> {

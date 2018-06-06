@@ -2,8 +2,8 @@ package ua.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.dto.EmployeeDto;
 import ua.mapper.impl.EmployeeReversibleDtoMapper;
+import ua.model.dto.EmployeeDto;
 import ua.repository.EmployeeRepository;
 import ua.service.EmployeeService;
 

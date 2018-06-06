@@ -1,6 +1,6 @@
 package ua.service;
 
-import ua.dto.PositionDto;
+import ua.model.dto.PositionDto;
 
 import java.util.List;
 import java.util.Optional;

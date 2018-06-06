@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan
+@ComponentScan("ua")
 @PropertySource("classpath:database.properties")
 public class PersistenceContext {
 

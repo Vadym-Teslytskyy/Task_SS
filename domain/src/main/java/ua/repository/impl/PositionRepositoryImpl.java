@@ -2,6 +2,7 @@ package ua.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import ua.entity.Position;
 import ua.mapper.PositionMapper;
 import ua.repository.PositionRepository;
@@ -9,6 +10,7 @@ import ua.repository.PositionRepository;
 import javax.sql.DataSource;
 import java.util.List;
 
+@Repository
 public class PositionRepositoryImpl implements PositionRepository {
 
     private JdbcTemplate jdbcTemplate;

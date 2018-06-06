@@ -1,6 +1,6 @@
 package ua.service;
 
-import ua.dto.EmployeeDto;
+import ua.model.dto.EmployeeDto;
 
 import java.util.List;
 import java.util.Optional;

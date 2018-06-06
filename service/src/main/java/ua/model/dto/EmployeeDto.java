@@ -1,4 +1,4 @@
-package ua.dto;
+package ua.model.dto;
 
 public class EmployeeDto {
 

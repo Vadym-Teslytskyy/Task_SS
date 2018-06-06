@@ -1,9 +1,9 @@
 package ua.mapper.impl;
 
 import org.springframework.stereotype.Component;
-import ua.dto.PositionDto;
 import ua.entity.Position;
 import ua.mapper.ReversibleDtoMapper;
+import ua.model.dto.PositionDto;
 
 @Component
 public class PositionReversibleDtoMapper implements ReversibleDtoMapper<Position, PositionDto> {

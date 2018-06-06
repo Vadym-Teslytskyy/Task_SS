@@ -4,8 +4,9 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ua.resource.ClientTestResource;
 import ua.spring.config.PersistenceContext;
+
+import javax.ws.rs.Path;
 
 public class ApplicationLauncher extends Application<ApplicationConfiguration> {
 
@@ -20,9 +21,9 @@ public class ApplicationLauncher extends Application<ApplicationConfiguration> {
 
     @Override
     public void run(ApplicationConfiguration applicationConfiguration, Environment environment) throws Exception {
-        final ClientTestResource resource = new ClientTestResource();
-        environment.jersey().register(resource);
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PersistenceContext.class);
-
+        context.getBeansWithAnnotation(Path.class).forEach((s, o1) -> {
+            environment.jersey().register(o1);
+        });
     }
 }
