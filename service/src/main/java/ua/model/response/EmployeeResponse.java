@@ -11,7 +11,7 @@ public class EmployeeResponse {
     private String message;
 
     public String getMessage() {
-        return "We found " + employeeDtos.stream().count() + " employees.";
+        return "We found " + employeeDtos.size() + " employees.";
     }
 
     public void setMessage(String message) {
