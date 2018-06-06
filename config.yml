@@ -5,3 +5,16 @@ server:
   adminConnectors:
   - type: http
     port: 9001
+datasourceUrl: jdbc:postgresql://127.0.0.1:5432/taskss
+datasourceUserName: postgres
+datasourcePassword: root
+datasourceDriver: org.postgresql.Driver
+#database:
+#  # the name of your JDBC driver
+#  driverClass: org.postgresql.Driver
+#  # the username
+#  user: postgres
+#  # the password
+#  password: root
+#  # the JDBC URL
+#  url: jdbc:postgresql://localhost:5432/taskss
