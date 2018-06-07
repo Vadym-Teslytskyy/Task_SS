@@ -1,0 +1,20 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="Vadym" id="2018-06-07-14-33">
+        <sql>
+            CREATE TABLE IF NOT EXISTS position
+            (
+            id integer NOT NULL DEFAULT nextval('position_id_seq'::regclass),
+            company_name character varying(255),
+            position_name character varying(255),
+            salary numeric,
+            CONSTRAINT position_pkey PRIMARY KEY (id)
+            );
+        </sql>
+        <comment>Creating table Position</comment>
+    </changeSet>
+
+</databaseChangeLog>

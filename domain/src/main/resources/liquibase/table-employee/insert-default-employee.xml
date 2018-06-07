@@ -1,0 +1,16 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="Vadym" id="2018-06-07-14-35">
+        <sql>
+            INSERT INTO employee(first_name, last_name, age) VALUES('Ivan','Ivanov',19);
+            INSERT INTO employee(first_name, last_name, age) VALUES('Mykola','Mykoloychuk',22);
+            INSERT INTO employee(first_name, last_name, age) VALUES('Petro','Petrenko',33);
+            INSERT INTO employee(first_name, last_name, age) VALUES('John','Cook',28);
+        </sql>
+        <comment>Insert default values in table Employee</comment>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,16 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="Vadym" id="2018-06-07-14-40">
+        <sql>
+            INSERT INTO position(company_name, position_name, salary) VALUES('SoftServe','Java developer',9000);
+            INSERT INTO position(company_name, position_name, salary) VALUES('Microsoft','C++ developer',15000);
+            INSERT INTO position(company_name, position_name, salary) VALUES('Apple','C# developer',13000);
+            INSERT INTO position(company_name, position_name, salary) VALUES('Google','UI designer',25000);
+        </sql>
+        <comment>Insert default values in table Position</comment>
+    </changeSet>
+
+</databaseChangeLog>
