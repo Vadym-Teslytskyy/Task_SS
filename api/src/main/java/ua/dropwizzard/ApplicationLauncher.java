@@ -21,7 +21,20 @@ public class ApplicationLauncher extends Application<ApplicationConfiguration> {
 
     @Override
     public void run(ApplicationConfiguration applicationConfiguration, Environment environment) throws Exception {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PersistenceContext.class);
+        AnnotationConfigApplicationContext parent = new AnnotationConfigApplicationContext();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+
+        parent.refresh();
+        parent.getBeanFactory().registerSingleton("configuration", applicationConfiguration);
+        parent.registerShutdownHook();
+        parent.start();
+
+        context.setParent(parent);
+        context.register(PersistenceContext.class);
+        context.refresh();
+        context.registerShutdownHook();
+        context.start();
+
         context.getBeansWithAnnotation(Path.class).forEach((s, o1) -> {
             environment.jersey().register(o1);
         });
