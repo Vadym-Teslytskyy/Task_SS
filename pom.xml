@@ -15,7 +15,7 @@
     </modules>
 
     <dependencies>
-
+        <!--Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -33,17 +33,37 @@
             <artifactId>spring-jdbc</artifactId>
             <version>4.3.0.RELEASE</version>
         </dependency>
-
+        <!--PostgreSQL-->
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.1-901-1.jdbc4</version>
+            <version>${postgre.version}</version>
+        </dependency>
+        <!--Spring-Kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
+        </dependency>
+        <!--slf4j Logger-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.8</version>
         </dependency>
 
     </dependencies>
 
     <properties>
-        <spring.version>4.3.0.RELEASE</spring.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
+        <postgre.version>9.1-901-1.jdbc4</postgre.version>
+        <spring-kafka.version>2.1.6.RELEASE</spring-kafka.version>
     </properties>
 
 

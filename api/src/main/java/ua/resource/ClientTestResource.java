@@ -2,6 +2,7 @@ package ua.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.kafka.producer.Sender;
 import ua.model.response.EmployeeResponse;
 import ua.service.EmployeeService;
 
@@ -18,6 +19,9 @@ public class ClientTestResource {
     @Autowired
     private EmployeeService service;
 
+    @Autowired
+    private Sender sender;
+
 //    @GET
 //    public EmployeeDto getAllEmployees() {
 //        return service.findEmployeeById(1).get();
@@ -25,6 +29,7 @@ public class ClientTestResource {
 
     @GET
     public EmployeeResponse getTestMessage() {
+        sender.send("***********************Spring Kafka Producer and Consumer Example!****************************");
         EmployeeResponse employeeResponse = new EmployeeResponse();
         if (service.getAllEmployees().isPresent()) {
             employeeResponse.setEmployeeDtos(service.getAllEmployees().get());

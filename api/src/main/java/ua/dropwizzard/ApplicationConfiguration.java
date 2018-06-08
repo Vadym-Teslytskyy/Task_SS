@@ -16,6 +16,30 @@ public class ApplicationConfiguration extends Configuration {
     @NotNull
     private String datasourceDriver;
 
+    private String springKafkaBootstrapServers;
+
+    private String appTopicFoo;
+
+    @JsonProperty
+    public String getSpringKafkaBootstrapServers() {
+        return springKafkaBootstrapServers;
+    }
+
+    @JsonProperty
+    public void setSpringKafkaBootstrapServers(String springKafkaBootstrapServers) {
+        this.springKafkaBootstrapServers = springKafkaBootstrapServers;
+    }
+
+    @JsonProperty
+    public String getAppTopicFoo() {
+        return appTopicFoo;
+    }
+
+    @JsonProperty
+    public void setAppTopicFoo(String appTopicFoo) {
+        this.appTopicFoo = appTopicFoo;
+    }
+
     @JsonProperty
     public String getDatasourceUrl() {
         return datasourceUrl;
