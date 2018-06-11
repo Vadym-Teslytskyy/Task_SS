@@ -22,7 +22,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     private final String SQL_UPDATE_EMPLOYEE_BY_ID = "update employee set first_name = ?, last_name = ?, age  = ?"
             + " where id = ?";
     private final String SQL_FIND_ALL = "select * from employee";
-    private final String SQL_INSERT_EMPLOYEE = "insert into employee(id, first_name, last_name, age) values(?,?,?,?)";
+    private final String SQL_INSERT_EMPLOYEE = "insert into employee(first_name, last_name, age) values(?,?,?)";
 
     @Autowired
     public EmployeeRepositoryImpl(DataSource dataSource, EmployeeMapper employeeMapper) {
@@ -53,7 +53,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public boolean createEmployee(Employee employee) {
-        return jdbcTemplate.update(SQL_INSERT_EMPLOYEE, employee.getId(), employee.getFirstName(),
+        return jdbcTemplate.update(SQL_INSERT_EMPLOYEE, employee.getFirstName(),
                 employee.getLastName(), employee.getAge()) > 0;
     }
 }

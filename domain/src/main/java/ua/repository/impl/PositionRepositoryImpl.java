@@ -22,8 +22,8 @@ public class PositionRepositoryImpl implements PositionRepository {
     private final String SQL_UPDATE_POSITION_BY_ID = "update position set company_name = ?, position_name = ?,"
             + " salary  = ? where id = ?";
     private final String SQL_FIND_ALL = "select * from position";
-    private final String SQL_INSERT_POSITION = "insert into position(id, company_name, position_name, salary)"
-            + " values(?,?,?,?)";
+    private final String SQL_INSERT_POSITION = "insert into position(company_name, position_name, salary)"
+            + " values(?,?,?)";
 
     @Autowired
     public PositionRepositoryImpl(DataSource dataSource, PositionMapper positionMapper) {
@@ -54,7 +54,7 @@ public class PositionRepositoryImpl implements PositionRepository {
 
     @Override
     public boolean createPosition(Position position) {
-        return jdbcTemplate.update(SQL_INSERT_POSITION, position.getId(), position.getCompanyName(),
+        return jdbcTemplate.update(SQL_INSERT_POSITION, position.getCompanyName(),
                 position.getPositionName(), position.getSalary()) > 0;
     }
 }

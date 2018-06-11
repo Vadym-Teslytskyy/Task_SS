@@ -13,6 +13,11 @@ datasourceDriver: org.postgresql.Driver
 springKafkaBootstrapServers: localhost:9092
 appTopicFoo: foo.t
 
+logging:
+  level: INFO
+  appenders:
+    - type: console
+      threshold: INFO
 #database:
 #  # the name of your JDBC driver
 #  driverClass: org.postgresql.Driver
