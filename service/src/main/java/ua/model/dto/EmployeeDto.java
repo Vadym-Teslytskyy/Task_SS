@@ -1,14 +1,18 @@
 package ua.model.dto;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class EmployeeDto {
 
+    @JsonProperty
     private Integer id;
-
+    @JsonProperty
     private String firstName;
-
+    @JsonProperty
     private String lastName;
-
-    private int age;
+    @JsonProperty
+    private Integer age;
 
     public Integer getId() {
         return id;
@@ -34,11 +38,11 @@ public class EmployeeDto {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
