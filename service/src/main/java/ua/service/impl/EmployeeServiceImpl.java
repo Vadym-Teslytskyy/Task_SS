@@ -1,6 +1,7 @@
 package ua.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import ua.mapper.impl.EmployeeReversibleDtoMapper;
 import ua.model.dto.EmployeeDto;
@@ -26,9 +27,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Optional<EmployeeDto> findEmployeeById(Integer id) {
-        return Optional.of(
-                dtoMapper.mapToDto(
-                        employeeRepository.findEmployeeById(id)));
+        Optional<EmployeeDto> employeeDto;
+        try {
+            employeeDto = Optional.of(
+                    dtoMapper.mapToDto(
+                            employeeRepository.findEmployeeById(id)));
+
+        } catch (EmptyResultDataAccessException e) {
+            employeeDto = Optional.empty();
+        }
+        return employeeDto;
     }
 
     @Override

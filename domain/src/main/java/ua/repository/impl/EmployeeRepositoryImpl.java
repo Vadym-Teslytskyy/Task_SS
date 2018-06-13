@@ -1,6 +1,7 @@
 package ua.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ua.entity.Employee;
@@ -31,7 +32,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public Employee findEmployeeById(Integer id) {
+    public Employee findEmployeeById(Integer id) throws EmptyResultDataAccessException {
         return jdbcTemplate.queryForObject(SQL_FIND_EMPLOYEE_BY_ID, new Object[]{id}, employeeMapper);
     }
 

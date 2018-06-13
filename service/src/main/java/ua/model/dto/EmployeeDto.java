@@ -1,17 +1,13 @@
 package ua.model.dto;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class EmployeeDto {
 
-    @JsonProperty
     private Integer id;
-    @JsonProperty
+
     private String firstName;
-    @JsonProperty
+
     private String lastName;
-    @JsonProperty
+
     private Integer age;
 
     public Integer getId() {

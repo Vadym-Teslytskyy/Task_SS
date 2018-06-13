@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.kafka.producer.Sender;
 import ua.model.dto.EmployeeDto;
-import ua.model.response.EmployeeResponse;
+import ua.model.response.ErrorDto;
 import ua.service.EmployeeService;
 
 import javax.ws.rs.*;
@@ -30,24 +30,27 @@ public class ClientTestResource {
 //    }
 
     @GET
-    public EmployeeResponse getTestMessage() {
+    public Response getAllEmployees() {
         sender.send("***********************Spring Kafka Producer and Consumer Example!****************************");
-        EmployeeResponse employeeResponse = new EmployeeResponse();
         if (service.getAllEmployees().isPresent()) {
-            employeeResponse.setEmployeeDtos(service.getAllEmployees().get());
-            return employeeResponse;
+            return Response.status(Response.Status.OK)
+                    .entity(service.getAllEmployees().get()).build();
         } else {
-            return new EmployeeResponse();
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(new ErrorDto("No employee found")).build();
         }
     }
 
     @GET
     @Path("/employee/{id}")
-    public EmployeeDto getEmployeeById(@PathParam("id") IntParam id) {
-//        if (service.findEmployeeById(id.get()).isPresent()){
-//            return service.findEmployeeById(id.get()).get();
-//        }
-        return service.findEmployeeById(id.get()).get();
+    public Response getEmployeeById(@PathParam("id") IntParam id) {
+        if (service.findEmployeeById(id.get()).isPresent()) {
+            return Response.status(Response.Status.OK)
+                    .entity(service.findEmployeeById(id.get()).get()).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(new ErrorDto("Employee with this id does not exist")).build();
+        }
     }
 
     @DELETE
@@ -56,15 +59,30 @@ public class ClientTestResource {
         Optional<EmployeeDto> employeeForDelete = service.findEmployeeById(id.get());
         if (employeeForDelete.isPresent()) {
             boolean isDeleted = service.deleteEmployee(employeeForDelete.get());
-            if (isDeleted == true) {
-                return Response.status(Response.Status.OK).entity("Employee deleted successfuly").build();
+            if (isDeleted) {
+                return Response.status(Response.Status.OK)
+                        .entity("Employee deleted successfully").build();
             } else {
-                return Response.status(Response.Status.OK).entity("Error during deleting").build();
+                return Response.status(Response.Status.OK)
+                        .entity(new ErrorDto("Error during deleting")).build();
             }
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Employee does not exist").build();
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(new ErrorDto("Employee does not exist")).build();
         }
     }
 
+    @PUT
+    @Path("/employee/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateEmployee(EmployeeDto employeeDto) {
+        boolean isUpdated = service.updateEmployee(employeeDto);
+        if (isUpdated) {
+            return Response.status(Response.Status.OK).entity("Employee updated successfully").build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).entity(new ErrorDto("Error during update")).build();
+        }
+
+    }
 
 }
