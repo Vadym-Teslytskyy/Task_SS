@@ -24,10 +24,18 @@ public class ClientTestResource {
     @Autowired
     private Sender sender;
 
-//    @GET
-//    public EmployeeDto getAllEmployees() {
-//        return service.findEmployeeById(1).get();
-//    }
+    @POST
+    @Path("/employee/create")
+    public Response createEmployee(EmployeeDto employeeDto) {
+        boolean isCreated = service.createEmployee(employeeDto);
+        if (isCreated) {
+            return Response.status(Response.Status.OK)
+                    .entity("Employee created successfully").build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(new ErrorDto("Error during creation")).build();
+        }
+    }
 
     @GET
     public Response getAllEmployees() {
